@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import "./Map.scss"
 import PhoneIcon from '@material-ui/icons/Phone';
 import EmailIcon from '@material-ui/icons/Email';
-import {GoogleMap, LoadScript, Marker,InfoWindow} from "@react-google-maps/api";
+import {GoogleMap, InfoWindow, LoadScript, Marker} from "@react-google-maps/api";
 
 const locations = [
     {
@@ -10,11 +10,12 @@ const locations = [
         location: {
             lat: 23.1768539,
             lng: 80.0245566
-        }
+        },
+        address: "Airport Rd, PDPM IIITDM Jabalpur Campus, Khamaria, Jabalpur, Madhya Pradesh 482005"
     }
 ]
 const mapStyles = {
-    margin:"10vh 0",
+    margin: "10vh 0",
     height: "75vh",
     width: "100%"
 };
@@ -25,15 +26,15 @@ const defaultCenter = {
 }
 
 const Map = () => {
-    const [selected,setSelected]=useState({});
+    const [selected, setSelected] = useState({});
     const onSelect = item => {
         setSelected(item);
     }
     return (
-        <div className="map container">
-            <div className="row">
+        <div className="container">
+            <div className="row ">
                 <h2 className="map-h2">Come Visit Us At Our Campus</h2>
-                <div className="col-lg-6">
+                <div className="map col-lg-6">
                     <LoadScript
                         googleMapsApiKey='AIzaSyDuyD9nq6tzG9O5FHwGBSbp9vjQ0I11OlA'>
                         <GoogleMap
@@ -59,15 +60,18 @@ const Map = () => {
                                         clickable={true}
                                         onCloseClick={() => setSelected({})}
                                     >
-                                        <p>{selected.name}</p>
+                                        <div className='container'>
+                                            <h3>{selected.name}</h3>
+                                            <p>{selected.address}</p>
+                                        </div>
                                     </InfoWindow>
                                 )
                             }
                         </GoogleMap>
                     </LoadScript>
                 </div>
-                <div className="col-lg-6">
-                    <p><a href={`tel:+917985163374`}><PhoneIcon/> Contact Us: 7985163374</a></p>
+                <div className="col-lg-6 info">
+                    <p><a href={`tel:+918529458915`}><PhoneIcon/> Contact Us:  8529458915</a></p>
                     <p><a href={`mailto:ers@iiitdmj.ac.in`}><EmailIcon/> Email Id : ers@iiitdmj.ac.in</a></p>
                 </div>
             </div>
