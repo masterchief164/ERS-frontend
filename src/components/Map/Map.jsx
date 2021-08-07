@@ -15,8 +15,8 @@ const locations = [
     }
 ]
 const mapStyles = {
-    margin: "10vh 0",
-    height: "75vh",
+    margin: "7vh 0",
+    height: "65vh",
     width: "100%"
 };
 
